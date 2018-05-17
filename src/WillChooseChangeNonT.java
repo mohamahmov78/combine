@@ -1,13 +1,13 @@
-public class BattleCryChooseChangeNonT extends BattleCry {
+public class WillChooseChangeNonT extends Will {
     private int[] friendlyChanges, enemyChanges;
-    BattleCryChooseChangeNonT (String name, String details, int[] friendlyChanges, int[] enemyChanges)
+    WillChooseChangeNonT (String name, String details, int[] friendlyChanges, int[] enemyChanges)
     {
         this.friendlyChanges = friendlyChanges;
         this.enemyChanges = enemyChanges;
-        setBattleCryDetails(details);
-        setBattleCryName(name);
+        setWillDetails(details);
+        setWillName(name);
     }
-    public void doBattleCry (MonsterField friendlyMonsterField, MonsterField enemyMonsterField, boolean[] enemyIsChosen, boolean[] friendlyIsChosen)
+    public void doWill (MonsterField friendlyMonsterField, MonsterField enemyMonsterField, boolean[] enemyIsChosen, boolean[] friendlyIsChosen)
     {
         for (int i = 0; i < 5; i++)
         {

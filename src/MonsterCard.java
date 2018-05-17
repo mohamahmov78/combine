@@ -3,12 +3,17 @@ public abstract class MonsterCard extends Card {
     private String Tribe = null;
     private int HP = -1;
     private int AP = -1;
+    private int HPchange = 0;
+    private int APchange = 0;
     private boolean IsDefensive;
     private boolean IsNimble;
     public int getAP () {return AP;}
     public int getHP () {return HP;}
+    public int getAPinGame() {return AP + APchange;}
+    public int getHPinGame() {return HP + HPchange;}
+    public void changeHP (int HPchange) {this.HPchange += HPchange;}
+    public void changeAP (int APchange) {this.APchange += APchange;}
     public void setHP (int HP) {this.HP = HP;}
-    public void addHP (int HP) {this.HP = this.HP + HP;}
     public void setAP (int AP) {this.AP = AP;}
     public boolean getIsDefensive () {return IsDefensive;}
     public boolean getIsNimble () {return IsNimble;}

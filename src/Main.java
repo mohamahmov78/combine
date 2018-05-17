@@ -1,4 +1,3 @@
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
@@ -9,8 +8,9 @@ public class Main {
         print.setPlay(play);
         Scanner input = new Scanner(System.in);
         Shop shop = new Shop();
-        while (true) //beginning Game
+        d: while (true) //beginning Game
         {
+            
             //game
             String Input;
             b:while (true) //after game
@@ -222,7 +222,7 @@ public class Main {
                 {
                     c:do //in Edit Inventory
                     {
-                        System.out.println("---Inventory");
+                        print.print("---Inventory");
                         Input = input.nextLine();
                         if (Input.equals("Help"))
                         {
@@ -233,14 +233,39 @@ public class Main {
                             do {
                                 print.print(texts.EditDeck_Help());
                                 Input = input.nextLine();
-                                if (Input.startsWith("Add")) {
-                                    String cardName = Input.substring(4).split(" ")[0];
-                                    int cardNumber = Integer.valueOf(Input.substring(4).split(" ")[1]);
-                                    play.player1.getDeck().addDeckCard(play.player1.getCard(cardName), cardNumber);
-                                    System.out.println("\"" + cardName + "\" was added to deck.");
+                                if (Input.startsWith("Add"))
+                                {
+                                    String cardName = Input.substring(4,Input.length() - Input.split(" ")[Input.split(" ").length - 1].length() - 1);
+                                    int cardNumber = Integer.valueOf(Input.split(" ")[Input.split(" ").length - 1]);
+                                    if (play.player1.getDeck().addDeckCard(play.player1.getCard(cardName),cardNumber))
+                                        System.out.println(cardNumber + " \"" + cardName + "\" were added to deck!");
+                                    else System.out.println("Only 30 Cards could be places in deck!");
                                     continue;
                                 }
-
+                                if (Input.startsWith("Remove"))
+                                {
+                                    String cardName = Input.substring(7).split(" ")[0];
+                                    int cardNumber = Integer.valueOf(Input.substring(7).split(" ")[1]);
+                                    if (play.player1.getDeck().removeDeckCard(cardName,cardNumber))
+                                    {
+                                        System.out.println(cardNumber + " \"" + cardName + "\" were removed from deck!");
+                                    }
+                                    else System.out.println("Not enough cards in deck to be removed!");
+                                    continue;
+                                }
+                                if (Input.equals("Help"))
+                                {
+                                    System.out.println(print.getLastPrints());
+                                }
+                                if (Input.equals("Again"))
+                                {
+                                    System.out.println(print.getLastPrints());
+                                    continue;
+                                }
+                                if (Input.equals("Exit"))
+                                {
+                                    continue c;
+                                }
                             }while (true);
                         }
                         if (Input.equals("Card Inventory"))
@@ -298,6 +323,44 @@ public class Main {
                                     System.out.println(print.getLastPrints());
                                 if (Input.equals("Exit"))
                                     continue c;
+                            }while (true);
+                        }
+                        if (Input.equals("Edit Amulets"))
+                        {
+                            do {
+                                System.out.println();
+                                print.print(texts.EditAmulet_Help());
+                                Input = input.nextLine();
+                                if (Input.startsWith("Equip"))
+                                {
+                                    String amuletName = Input.substring(6);
+                                    if (play.player1.getEquippedAmulet() == null)
+                                    {
+                                        play.player1.setEquippedAmulet(play.player1.getAmulet(amuletName));
+                                        System.out.println("\"" + amuletName + "\" was equipped on the player.");
+                                    }
+                                    else {
+                                        System.out.println("Player is already equipped with an amulet.");
+                                    }
+                                    continue;
+                                }
+                                if (Input.startsWith("Remove"))
+                                {
+                                    if (play.player1.getEquippedAmulet() != null)
+                                    {
+                                        String amuletName = play.player1.getEquippedAmulet().getName();
+                                        play.player1.setEquippedAmulet(null);
+                                        System.out.println("\"" + amuletName + "\" was removed.");
+                                    }
+                                    else {
+                                        System.out.println("Player is not equipped with an amulet.");
+                                    }
+                                    continue;
+                                }
+                                if (Input.equals("Exit"))
+                                {
+                                    continue c;
+                                }
                             }while (true);
                         }
                         if (Input.equals("Again"))

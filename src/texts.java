@@ -111,7 +111,7 @@ public class texts {
 
     public static String CardInventory(Player player) {
         StringBuilder Return = new StringBuilder();
-        Return.append("Card Inventory:\n");
+        Return.append("------Card Inventory:\n");
         for (int i = 0; i < player.getPlayerCards().size(); i++)
         {
             Return.append(i+1 + ". " + player.getPlayerCards().get(i).getNumber() + " \"" + player.getPlayerCards().get(i).getCard() + "\" / " + player.getDeck().getCardNumber(player.getPlayerCards().get(i).getCard().getName()) + " on deck\n");
@@ -121,7 +121,7 @@ public class texts {
 
     public static String ItemInventory(LinkedList<ItemCollection> itemCollections) {
         StringBuilder Return = new StringBuilder();
-        Return.append("Item Inventory:\n");
+        Return.append("------Item Inventory:\n");
         for (int i = 0; i < itemCollections.size(); i++)
         {
             Return.append(i+1 + ". " + itemCollections.get(i).getNumber() + " \"" + itemCollections.get(i).getItem() + "\"\n");
@@ -131,7 +131,7 @@ public class texts {
 
     public static String AmuletInventory(LinkedList<Amulet> amulets) {
         StringBuilder Return = new StringBuilder();
-        Return.append("Amulet Inventory:\n");
+        Return.append("------Amulet Inventory:\n");
         for (int i = 0; i < amulets.size(); i++)
         {
             Return.append(i+1 + ". \"" + amulets.get(i) + "\"\n");
@@ -143,7 +143,12 @@ public class texts {
         return "------Edit Deck\n" +
                 "1. Add \"Card Name\" #CardNum: To add cards to your deck\n" +
                 "2. Remove \"Card Name\" #CardNum: To remove cards from your deck\n" +
-                "3. Info \"Card Name\": To get more information about a specific card\n" +
-                "4. Exit: To return to the previous section\n";
+                "3. Exit: To return to the previous section\n";
+    }
+
+    public static String EditAmulet_Help() {
+        return "1. Equip \"Amulet Name\": To equip the player with an amulet\n" +
+                "2. Remove: To remove the amulet equipped with the player\n" +
+                "3. Exit: To return to the previous section\n";
     }
 }

@@ -1,6 +1,9 @@
+import java.util.Arrays;
+import java.util.LinkedList;
 
 public class SpellField {
     private SpellCard[] SFCards = new SpellCard[3];
+    public LinkedList<SpellCard> spellCards= new LinkedList<>(Arrays.asList(SFCards));
     public SpellCard[] getSpellField() {
         return SFCards;
     }

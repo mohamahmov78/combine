@@ -40,19 +40,18 @@ public class Deck
         }
         return false;
     }
-    public int deckCardNumber(String cardName)
+    public int getAllNumber()
     {
         int number = 0;
         for (int i = 0; i < deckCards.size(); i++)
         {
-            if (deckCards.get(i).getCard().getName().equals(cardName))
-                number += deckCards.get(i).getNumber();
+            number += deckCards.get(i).getNumber();
         }
         return number;
     }
-    public void addDeckCard (Card card, int number)
+    public boolean addDeckCard (Card card, int number)
     {
-        if () {
+        if (getAllNumber() + number <= 30) {
             boolean isAlreadyInDeckCards = false;
             for (int i = 0; i < deckCards.size(); i++) {
                 if (deckCards.get(i).getCard().equals(card)) {
@@ -65,5 +64,6 @@ public class Deck
                 deckCards.add(new CardCollection(card, number));
             }
         }
+        else return false;
     }
 }
